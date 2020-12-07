@@ -17,14 +17,14 @@
 ## itemsテーブル
 | Column             | Type         | Options                         |
 | ------------------ | ------------ | ------------------------------- |
-| item_name          | string       | null: false                     |
-| item_detail        | string       | null: false                     |
-| item_category_id   | integer      | null: false                     |
-| item_status_id     | integer      | null: false                     |
+| name　　　          | string       | null: false                     |
+| detail　　　        | text         | null: false                     |
+| category_id 　　　  | integer      | null: false                     |
+| status_id　　　     | integer      | null: false                     |
 | shipping_fee_id    | integer      | null: false                     |
 | shipping_area_id   | integer      | null: false                     |
 | shipping_date_id   | integer      | null: false                     |
-| item_price         | integer      | null: false                     |
+| price 　　　        | integer      | null: false                     |
 | user               | references   | null: false, foreign_key: true  |
 
 ### Association
