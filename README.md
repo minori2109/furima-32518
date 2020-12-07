@@ -45,12 +45,12 @@
 ## addressesテーブル
 | Column        | Type       | Options                         |
 | ------------- | ---------- | ------------------------------- |
-| postcode      | text       | null: false                     |
-| prefecture    | text       | null: false                     |
-| city          | text       | null: false                     |
-| block         | text       | null: false                     |
-| building      | text       | null: false                     |
-| phone_number  | int        | null: false                     |
+| postcode      | string     | null: false                     |
+| prefecture_id | integer    | null: false                     |
+| city          | string     | null: false                     |
+| block         | string     | null: false                     |
+| building      | string     |                                 |
+| phone_number  | string     | null: false                     |
 | order         | references | null: false, foreign_key: true  |
 
 ### Association
