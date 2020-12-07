@@ -15,17 +15,17 @@
 - has_many :orders
 
 ## itemsテーブル
-| Column           | Type         | Options                         |
-| ---------------- | ------------ | ------------------------------- |
-| item_name        | string       | null: false                     |
-| item_detail      | string       | null: false                     |
-| item_category    | text         | null: false                     |
-| item_status      | text         | null: false                     |
-| shipping_fee     | text         | null: false                     |
-| shipping_area    | text         | null: false                     |
-| shipping_date    | text         | null: false                     |
-| item_price       | int          | null: false                     |
-| user             | references   | null: false, foreign_key: true  |
+| Column             | Type         | Options                         |
+| ------------------ | ------------ | ------------------------------- |
+| item_name          | string       | null: false                     |
+| item_detail        | string       | null: false                     |
+| item_category_id   | integer      | null: false                     |
+| item_status_id     | integer      | null: false                     |
+| shipping_fee_id    | integer      | null: false                     |
+| shipping_area_id   | integer      | null: false                     |
+| shipping_date_id   | integer      | null: false                     |
+| item_price         | integer      | null: false                     |
+| user               | references   | null: false, foreign_key: true  |
 
 ### Association
 - belongs_to :user
