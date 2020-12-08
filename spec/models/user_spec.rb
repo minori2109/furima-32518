@@ -64,6 +64,17 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
       end
+      it 'passwordが半角英字だけでは登録できない' do
+        @user.password = 'abcdef'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+      end
+      it 'passwordが全角英数混合では登録できない' do
+        @user.password = 'aｂｃ1２３'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+      end
+
       it 'passwordが存在してもpassword_confirmationが空では登録できない' do
         @user.password_confirmation = ''
         @user.valid?
@@ -79,11 +90,14 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
-      it 'ユーザー本名が半角では登録できない' do
+      it 'ユーザー本名の名字が半角では登録できない' do
         @user.last_name = 'ﾀﾅｶ'
-        @user.first_name = 'ssss'
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name Full-width characters')
+      end
+      it 'ユーザー本名の名前が半角では登録できない' do
+        @user.first_name = 'ﾀﾛｳ'
+        @user.valid?
         expect(@user.errors.full_messages).to include('First name Full-width characters')
       end
       it 'ユーザー本名のフリガナの名字が空だと登録できない' do
@@ -96,11 +110,24 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
-      it 'ユーザー本名のフリガナが半角では登録できない' do
-        @user.last_name_kana = 'aaa'
-        @user.first_name_kana = 'ﾀﾛｳ'
+      it 'ユーザー本名のフリガナの名字が半角では登録できない' do
+        @user.last_name_kana = 'ｲﾄｳ'
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name kana Full-width katakana characters')
+      end
+      it 'ユーザー本名のフリガナの名前が半角では登録できない' do
+        @user.first_name_kana = 'ｻｷ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name kana Full-width katakana characters')
+      end
+      it 'ユーザー本名のフリガナの名字は全角ひらがなでは登録できない' do
+        @user.last_name_kana = 'さとう'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name kana Full-width katakana characters')
+      end
+      it 'ユーザー本名のフリガナの名前は全角ひらがなでは登録できない' do
+        @user.first_name_kana = 'しずか'
+        @user.valid?
         expect(@user.errors.full_messages).to include('First name kana Full-width katakana characters')
       end
       it '生年月日が空では登録できない' do
