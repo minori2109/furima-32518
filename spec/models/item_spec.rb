@@ -11,7 +11,7 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it '販売価格が半角数字で入力された場合、保存できること' do
-        @item.price = '2500'
+        @item.price = 2500
         expect(@item).to be_valid
       end
     end
@@ -33,27 +33,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Detail can't be blank")
       end
       it 'category_idが「1」の場合、保存できないこと' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category Select')
       end
       it 'status_idが「1」の場合、保存できないこと' do
-        @item.status_id = '1'
+        @item.status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Status Select')
       end
       it 'shipping_fee_idが「1」の場合、保存できないこと' do
-        @item.shipping_fee_id = '1'
+        @item.shipping_fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping fee Select')
       end
       it 'shipping_area_idが「1」の場合、保存できないこと' do
-        @item.shipping_area_id = '1'
+        @item.shipping_area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping area Select')
       end
       it 'shipping_date_idが「1」の場合、保存できないこと' do
-        @item.shipping_date_id = '1'
+        @item.shipping_date_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping date Select')
       end
