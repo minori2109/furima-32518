@@ -11,7 +11,7 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it '販売価格が半角数字で入力された場合、保存できること' do
-        @item.price = "2500"
+        @item.price = '2500'
         expect(@item).to be_valid
       end
     end
@@ -33,29 +33,29 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Detail can't be blank")
       end
       it 'category_idが「1」の場合、保存できないこと' do
-        @item.category_id = "1"
+        @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Select")
+        expect(@item.errors.full_messages).to include('Category Select')
       end
       it 'status_idが「1」の場合、保存できないこと' do
-        @item.status_id = "1"
+        @item.status_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status Select")
+        expect(@item.errors.full_messages).to include('Status Select')
       end
       it 'shipping_fee_idが「1」の場合、保存できないこと' do
-        @item.shipping_fee_id = "1"
+        @item.shipping_fee_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping fee Select")
+        expect(@item.errors.full_messages).to include('Shipping fee Select')
       end
       it 'shipping_area_idが「1」の場合、保存できないこと' do
-        @item.shipping_area_id = "1"
+        @item.shipping_area_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping area Select")
+        expect(@item.errors.full_messages).to include('Shipping area Select')
       end
       it 'shipping_date_idが「1」の場合、保存できないこと' do
-        @item.shipping_date_id = "1"
+        @item.shipping_date_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping date Select")
+        expect(@item.errors.full_messages).to include('Shipping date Select')
       end
       it 'priceが空では保存できないこと' do
         @item.price = nil
@@ -63,24 +63,24 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it 'priceが全角で入力された場合、保存できないこと' do
-        @item.price = "４５００"
+        @item.price = '４５００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number")
+        expect(@item.errors.full_messages).to include('Price Half-width number')
       end
       it 'priceの値が300円より低いとき保存できないこと' do
-        @item.price = "200"
+        @item.price = '200'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
       it 'priceの値が9,999,999円より高いとき保存できないこと' do
-        @item.price = "99999999"
+        @item.price = '99999999'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
       it 'userが紐づいていないと保存できないこと' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
