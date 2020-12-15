@@ -22,6 +22,12 @@ RSpec.describe OrderAddress, type: :model do
       expect(@order_address.errors.full_messages).to include('Postcode Input correctly')
     end
 
+    it 'postcodeが半角英字だと保存できないこと' do
+      @order_address.postcode = 'abcdefg'
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include('Postcode Input correctly')
+    end
+
     it 'postcodeにハイフンを含む正しい形式でないと保存できないこと' do
       @order_address.postcode = '1234567'
       @order_address.valid?
@@ -59,6 +65,12 @@ RSpec.describe OrderAddress, type: :model do
 
     it 'phone_numberが全角だと保存できないこと' do
       @order_address.phone_number = '０８０１２３４５６７８'
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include('Phone number Input only number')
+    end
+
+    it 'phone_numberが半角英字だと保存できないこと' do
+      @order_address.phone_number = 'abcdefghijkl'
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include('Phone number Input only number')
     end
