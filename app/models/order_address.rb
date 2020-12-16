@@ -7,6 +7,8 @@ class OrderAddress
     validates :city
     validates :block
     validates :phone_number, numericality: { only_integer: true, message: 'Input only number' }
+    validates :user_id
+    validates :item_id
     validates :token
   end
 
