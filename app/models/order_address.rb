@@ -6,13 +6,12 @@ class OrderAddress
     validates :postcode, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'Input correctly' }
     validates :city
     validates :block
-    validates :phone_number, numericality: { only_integer: true, message: 'Input only number' }
+    validates :phone_number, numericality: { only_integer: true, message: 'Input only number' }, length: { maximum: 11 }
     validates :user_id
     validates :item_id
     validates :token
   end
 
-  validates :phone_number, length: { maximum: 11 }
   validates :shipping_area_id, numericality: { other_than: 1, message: 'Select' }
 
   def save
