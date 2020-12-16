@@ -10,6 +10,7 @@ class OrderAddress
     validates :token
   end
 
+  validates :phone_number, length: { maximum: 11 }
   validates :shipping_area_id, numericality: { other_than: 1, message: 'Select' }
 
   def save
