@@ -12,7 +12,7 @@ class User < ApplicationRecord
   VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/.freeze
   VALID_NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
 
-  with_options presence: true do
+  with_options presence: { message: 'を入力してください' } do
     validates :nickname
     validates :last_name, format: { with: VALID_NAME_REGEX, message: 'は全角で入力してください' }
     validates :first_name, format: { with: VALID_NAME_REGEX, message: 'は全角で入力してください' }
